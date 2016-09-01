@@ -1,5 +1,8 @@
 # Superfaktura API Specification
 
+> Superfaktur client API specification in swagger.
+
+[Documentation](https://jozefizso.github.io/SuperfakturaApi-Spec/)
 
 ## License
 
