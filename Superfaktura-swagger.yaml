@@ -1,0 +1,70 @@
+# Superfaktura API
+swagger: '2.0'
+info:
+  title: Superfaktura API
+  description: Superfaktura API
+  version: "0.1.0"
+# the domain of the service
+host: moja.superfaktura.sk
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /
+produces:
+  - application/json
+paths:
+  /sequences/index.json:
+    get:
+      summary: Číselníky
+      description: |
+        Zoznam číselníkov v JSON formáte.
+      responses:
+        200:
+          description: Zoznam číselníkov
+          schema:
+            $ref: '#/definitions/SequenceMap'
+definitions:
+  SequenceMap:
+    type: object
+    properties:
+      regular:
+        type: array
+        items:
+          $ref: '#/definitions/Sequence'
+  Sequence:
+    type: object
+    properties:
+      id:
+        type: string
+        description: id
+      user_profile_id:
+        type: string
+        description: user_profile_id
+      period_type:
+        type: string
+        description: period_type
+      mask:
+        type: string
+        description: mask
+      name:
+        type: string
+        description: name
+      sequence:
+        type: string
+        description: sequence
+      item_type:
+        type: string
+        description: item_type
+      default:
+        type: string
+        description: default
+      created:
+        type: string
+        description: created
+      modified:
+        type: string
+        description: modified
+      sequence_formatted:
+        type: string
+        description: sequence_formatted
