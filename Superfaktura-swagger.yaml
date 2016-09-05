@@ -14,6 +14,16 @@ basePath: /
 produces:
   - application/json
 paths:
+  /invoices/index.json:
+    get:
+      summary: Faktúry
+      description: |
+       Zoznam faktúr v JSON formáte.
+      responses:
+        200:
+          description: Faktúry
+          schema:
+            $ref: '#/definitions/InvoiceList'
   /sequences/index.json:
     get:
       summary: Číselníky
@@ -51,6 +61,226 @@ paths:
             application/json:
               { "1": "Tag1", "2": "Tag2" }
 definitions:
+  InvoiceList:
+    type: array
+    items:
+      $ref: '#/definitions/InvoiceDetails'
+  InvoiceDetails:
+    type: object
+    properties:
+      0:
+        type: object
+      Client:
+        type: object
+      Invoice:
+        $ref: '#/definitions/Invoice'
+      InvoicePayment:
+        type: object
+      InvoiceEmail:
+        type: object
+      PostStamp:
+        type: object
+  Invoice:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int32
+        description: "id"
+      user_id:
+        type: integer
+        format: int32
+        description: "user_id"
+      user_profile_id:
+        type: integer
+        format: int32
+        description: "user_profile_id"
+      client_id:
+        type: integer
+        format: int32
+        description: "client_id"
+      parent_id:
+        type: integer
+        format: int32
+        description: "parent_id"
+      proforma_id:
+        type: integer
+        format: int32
+        description: "proforma_id"
+      estimate_id:
+        type: integer
+        format: int32
+        description: "estimate_id"
+      sequence_id:
+        type: integer
+        format: int32
+        description: "sequence_id"
+      import_type:
+        type: string
+        description: "import_type"
+      import_id:
+        type: integer
+        format: int32
+        description: "import_id"
+      import_parent_id:
+        type: integer
+        format: int32
+        description: "import_parent_id"
+      type:
+        type: string
+        description: "type"
+      tax_document:
+        type: string
+        description: "tax_document"
+      name:
+        type: string
+        description: "name"
+      lang:
+        type: string
+        description: "lang"
+      client_data:
+        type: string
+        description: "client_data"
+      items_data:
+        type: string
+        description: "items_data"
+      invoice_no:
+        type: integer
+        format: int32
+        description: "invoice_no"
+      order_no:
+        type: integer
+        format: int32
+        description: "order_no"
+      invoice_no_formatted:
+        type: string
+        description: "invoice_no_formatted"
+      mask:
+        type: string
+        description: "mask"
+      variable:
+        type: string
+        description: "variable"
+      constant:
+        type: string
+        description: "constant"
+      specific:
+        type: string
+        description: "specific"
+      payment_type:
+        type: string
+        description: "payment_type"
+      status:
+        type: string
+        description: "status"
+      home_currency:
+        type: string
+        description: "home_currency"
+      invoice_currency:
+        type: string
+        description: "invoice_currency"
+      exchange_rate:
+        type: number
+        format: double
+        description: "exchange_rate"
+      country_exchange_rate:
+        type: number
+        format: double
+        description: "country_exchange_rate"
+      amount:
+        type: number
+        format: double
+        description: "amount"
+      vat:
+        type: number
+        format: double
+        description: "vat"
+      discount:
+        type: number
+        format: double
+        description: "discount"
+      items_name:
+        type: string
+        description: "items_name"
+      issued_by:
+        type: string
+        description: "issued_by"
+      issued_by_phone:
+        type: string
+        description: "issued_by_phone"
+      issued_by_email:
+        type: string
+        description: "issued_by_email"
+      paid:
+        type: number
+        format: double
+        description: "paid"
+      amount_paid:
+        type: number
+        format: double
+        description: "amount_paid"
+      deposit:
+        type: number
+        format: double
+        description: "deposit"
+      header_comment:
+        type: string
+        description: "header_comment"
+      comment:
+        type: string
+        description: "comment"
+      internal_comment:
+        type: string
+        description: "internal_comment"
+      created:
+        type: string
+        description: "created"
+      modified:
+        type: string
+        description: "modified"
+      recurring:
+        type: string
+        description: "recurring"
+      paydate:
+        type: string
+        description: "paydate"
+      delivery:
+        type: string
+        description: "delivery"
+      delivery_type:
+        type: string
+        description: "delivery_type"
+      due:
+        type: string
+        format: date
+        description: "due"
+      demo:
+        type: string
+        description: "demo"
+      token:
+        type: string
+        description: "token"
+      tags:
+        type: string
+        description: "tags"
+      rounding:
+        type: string
+        description: "rounding"
+      vat_transfer:
+        type: string
+        description: "vat_transfer"
+      special_vat_scheme:
+        type: string
+        description: "special_vat_scheme"
+      issued_by_web:
+        type: string
+        description: "issued_by_web"
+      summary_invoice:
+        type: string
+        description: "summary_invoice"
+      flag:
+        type: string
+        description: "flag"
   CountriesMap:
     type: object
     additionalProperties:
