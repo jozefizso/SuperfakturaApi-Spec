@@ -37,8 +37,25 @@ paths:
           examples:
             application/json:
               { "1": "Afganistan", "57": "Česká republika", "191": "Slovensko" }
+  /tags/index.json:
+    get:
+      summary: Vráti číselník tagov.
+      description: |
+        Vráti číselník tagov v JSON formáte.
+      responses:
+        200:
+          description: Zoznam krajín
+          schema:
+            $ref: '#/definitions/TagsMap'
+          examples:
+            application/json:
+              { "1": "Tag1", "2": "Tag2" }
 definitions:
   CountriesMap:
+    type: object
+    additionalProperties:
+      type: string
+  TagsMap:
     type: object
     additionalProperties:
       type: string
