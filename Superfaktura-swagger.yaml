@@ -24,7 +24,24 @@ paths:
           description: Zoznam číselníkov
           schema:
             $ref: '#/definitions/SequenceMap'
+  /countries/index.json:
+    get:
+      summary: Vráti číselník krajín.
+      description: |
+        Vráti číselník krajín v JSON formáte.
+      responses:
+        200:
+          description: Zoznam krajín
+          schema:
+            $ref: '#/definitions/CountriesMap'
+          examples:
+            application/json:
+              { "1": "Afganistan", "57": "Česká republika", "191": "Slovensko" }
 definitions:
+  CountriesMap:
+    type: object
+    additionalProperties:
+      type: string
   SequenceMap:
     type: object
     properties:
